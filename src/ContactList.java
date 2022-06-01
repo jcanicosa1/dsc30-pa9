@@ -1,18 +1,37 @@
-import java.util.*;   
+/*
+ * PID: A16957972
+ */
+
+import java.util.*;
 
 public class ContactList {
+    ArrayList<Person> people;
 	
 	// Add instance variables here
 	
     public boolean createContact(Person person) {
-        return true
-    }
-
-    public boolean lookupContact(String name) {
+        if (lookupContact(person.getName())) {
+            return false;
+        }
+        people.add(person);
         return true;
     }
 
+    public boolean lookupContact(String name) {
+        for (Person p : people) {
+            if (p.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Person getContact(String name) {
+        for (Person p : people) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
         return null;
     }
 
