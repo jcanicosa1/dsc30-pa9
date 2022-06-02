@@ -5,7 +5,7 @@
 import java.util.*;
 
 public class ContactList {
-    ArrayList<Person> people;
+    ArrayList<Person> people = new ArrayList<>();
     int size;
 	
 	// Add instance variables here
