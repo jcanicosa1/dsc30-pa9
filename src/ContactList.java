@@ -5,14 +5,17 @@
 import java.util.*;
 
 public class ContactList {
-    ArrayList<Person> people;
-    int size;
+    private ArrayList<Person> people = new ArrayList<>();
+    private int size = 0;
 	
 	// Add instance variables here
+    /*
     public ContactList() {
         this.people =  new ArrayList<>();
         this.size = 0;
     }
+
+     */
 	
     public boolean createContact(Person person) {
         if (lookupContact(person.getName())) {
