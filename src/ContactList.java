@@ -5,17 +5,25 @@
 import java.util.*;
 
 public class ContactList {
-    ArrayList<Person> people = new ArrayList<>();
+    ArrayList<Person> people;
     int size;
 	
 	// Add instance variables here
+    public ContactList() {
+        this.people =  new ArrayList<>();
+        this.size = 0;
+    }
 	
     public boolean createContact(Person person) {
         if (lookupContact(person.getName())) {
             return false;
         }
+        if (size == 0) {
+            people.add(person);
+        } else {
+            InsertionSort(person);
+        }
         size++;
-        InsertionSort(person);
         return true;
     }
 
@@ -23,6 +31,8 @@ public class ContactList {
         int start = 0;
         int end = size();
         for (int i = start; i < end; i++) {
+            System.out.print(i);
+            System.out.print(end);
             if (0 > (toInsert.getName().compareTo(people.get(i).getName()))) {
                 people.add(i, toInsert);
                 break;
