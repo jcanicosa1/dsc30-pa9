@@ -64,10 +64,10 @@ public class Worksheet {
         nodeList.add(new HuffmanNode('6', 1, "11001"));
         nodeList.add(new HuffmanNode('o', 1, "11010"));
         nodeList.add(new HuffmanNode('r', 1, "11011"));
-        nodeList.add(new HuffmanNode('\n', 1, "10110"));
-        nodeList.add(new HuffmanNode('0', 1, "111"));
-        nodeList.add(new HuffmanNode('a', 1, "00"));
-        nodeList.add(new HuffmanNode('p', 1, "01"));
+        nodeList.add(new HuffmanNode('\n', 4, "10110"));
+        nodeList.add(new HuffmanNode('0', 6, "111"));
+        nodeList.add(new HuffmanNode('a', 6, "00"));
+        nodeList.add(new HuffmanNode('p', 6, "01"));
         return nodeList;
     }
 
@@ -78,19 +78,19 @@ public class Worksheet {
     public static ArrayList<HuffmanNode> q1bEncodeChar(){
         ArrayList<HuffmanNode> nodeList = new ArrayList<HuffmanNode>();
         nodeList.add(new HuffmanNode('s', 6, "00"));
-        nodeList.add(new HuffmanNode('i', 3, "1001"));
-        nodeList.add(new HuffmanNode('a', 3, "1000"));
-        nodeList.add(new HuffmanNode(' ', 4, "101"));
-        nodeList.add(new HuffmanNode('h', 2, "1100"));
+        nodeList.add(new HuffmanNode('i', 3, "1111"));
+        nodeList.add(new HuffmanNode('a', 3, "1110"));
+        nodeList.add(new HuffmanNode(' ', 5, "110"));
+        nodeList.add(new HuffmanNode('h', 2, "1000"));
         nodeList.add(new HuffmanNode('c', 2, "0110"));
-        nodeList.add(new HuffmanNode('l', 2, "1101"));
+        nodeList.add(new HuffmanNode('l', 2, "1001"));
         nodeList.add(new HuffmanNode('e', 2, "0111"));
-        nodeList.add(new HuffmanNode('r', 2, "1111"));
+        nodeList.add(new HuffmanNode('r', 2, "1011"));
         nodeList.add(new HuffmanNode('T', 1, "01010"));
         nodeList.add(new HuffmanNode('f', 1, "01011"));
-        nodeList.add(new HuffmanNode('v', 1, "01000"));
-        nodeList.add(new HuffmanNode('o', 1, "11100"));
-        nodeList.add(new HuffmanNode('t', 1, "11101"));
+        nodeList.add(new HuffmanNode('v', 1, "0100"));
+        nodeList.add(new HuffmanNode('o', 1, "10100"));
+        nodeList.add(new HuffmanNode('t', 1, "10101"));
         return nodeList;
     }
 
@@ -99,9 +99,29 @@ public class Worksheet {
      * @return a list of BNodes
      */
     public static ArrayList<BNode> q2EncodeTree(){
-        /*TODO: insert BNodes into a nodeList, where each node stores the data and path of a character */
         ArrayList<BNode> nodeList = new ArrayList<BNode>();
         //example of adding nodes to nodeList : nodeList.add(new BNode(Arrays.asList(17,24)));
+
+        nodeList.add(new BNode(Arrays.asList(16, 17, 24)));
+        nodeList.add(new BNode(Arrays.asList(36)));
+        nodeList.add(new BNode(Arrays.asList(43, 50)));
+        nodeList.add(new BNode(Arrays.asList(55, 60)));
+        nodeList.add(new BNode(Arrays.asList(70)));
+        nodeList.add(new BNode(Arrays.asList(103)));
+        nodeList.add(new BNode(Arrays.asList(32, 42)));
+        nodeList.add(new BNode(Arrays.asList(67, 78)));
+        nodeList.add(new BNode(Arrays.asList(53)));
+
+        nodeList.get(8).addChildren(nodeList.get(6));
+        nodeList.get(8).addChildren(nodeList.get(7));
+
+        nodeList.get(6).addChildren(nodeList.get(0));
+        nodeList.get(6).addChildren(nodeList.get(1));
+        nodeList.get(6).addChildren(nodeList.get(2));
+
+        nodeList.get(7).addChildren(nodeList.get(3));
+        nodeList.get(7).addChildren(nodeList.get(4));
+        nodeList.get(7).addChildren(nodeList.get(5));
         return nodeList;
 
     }
