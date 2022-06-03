@@ -89,14 +89,14 @@ public class Person {
     }
 
     public boolean deletePhoneNumber(String pn) {
+        if (!pnArray.contains(pn)) {
+            return false;
+        }
         if (getSize() == 1) {
             throw new IllegalArgumentException();
         }
+        pnArray.remove(pn);
+        return true;
 
-        if (pnArray.contains(pn)) {
-            pnArray.remove(pn);
-            return true;
-        }
-        return false;
     }
 }
