@@ -58,11 +58,8 @@ public class ContactList {
 
     public Person[] getContactByRange(String start, String end) {
         ArrayList<Person> contacts = new ArrayList<>();
-        System.out.println("start: " + start);
-        System.out.println("end: " + end);
         for (int i = 0; i < size(); i++) {
-            //System.out.println(people.get(i).getName());
-            if ((0 == people.get(i).getName().compareTo(start) || 0 > people.get(i).getName().compareTo(start)) && 0 < people.get(i).getName().compareTo(end)) {
+            if ((0 == people.get(i).getName().compareTo(start) || 0 < people.get(i).getName().compareTo(start)) && 0 > people.get(i).getName().compareTo(end)) {
                 contacts.add(people.get(i));
             }
         }
@@ -102,7 +99,9 @@ public class ContactList {
     public String[] fetchAllPhoneNumbers() {
         DoublyLinkedList<String> contacts = new DoublyLinkedList<>();
         for (Person p : people) {
+            //System.out.println(p.getName());
             for (String numbers: p.getPhoneNumbers()) {
+                //System.out.println(numbers);
                 if(!contacts.contains(numbers)) {
                     contacts.add(numbers);
                 }

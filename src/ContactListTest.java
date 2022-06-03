@@ -49,6 +49,7 @@ public class ContactListTest {
 
     @Test
     public void getContactByRange() {
+
         ContactList obj = new ContactList();
         ArrayList<String> arr = new ArrayList<>();
         arr.add("12345");
@@ -60,7 +61,7 @@ public class ContactListTest {
         ArrayList<String> arr3 = new ArrayList<>();
         arr3.add("23214");
         obj.createContact(new Person("mia", new ArrayList<>()));
-        Person[] grr = obj.getContactByRange("mia", "karl");
+        Person[] grr = obj.getContactByRange("karl", "mia");
         String[] toPrint2 = obj.fetchAllNames();
 
 
@@ -68,6 +69,31 @@ public class ContactListTest {
             System.out.println(o.getName());
         }
 
+
+
+
+        /*
+        ContactList obj2 = new ContactList();
+        ArrayList<String> arr0 = new ArrayList<>();
+        arr0.add("12345");
+        obj2.createContact(new Person("a", arr0));
+        ArrayList<String> arr22 = new ArrayList<>();
+        arr22.add("2342214");
+        obj2.createContact(new Person("c", arr22));
+        String[] toPrint1 = obj2.fetchAllNames();
+        ArrayList<String> arr32 = new ArrayList<>();
+        arr32.add("23214");
+        obj2.createContact(new Person("b", arr32));
+        Person[] grr1 = obj2.getContactByRange("a", "c");
+        String[] toPrint3 = obj2.fetchAllNames();
+
+
+        for (Person o: grr1) {
+            System.out.println(o.getName());
+        }
+
+
+         */
 
     }
 
@@ -85,5 +111,21 @@ public class ContactListTest {
 
     @Test
     public void fetchAllPhoneNumbers() {
+        ContactList obj = new ContactList();
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("12345");
+        arr.add("12345");
+        boolean check = obj.createContact(new Person("mark", arr));
+        ArrayList<String> arr2 = new ArrayList<>();
+        arr2.add("2342214");
+        arr2.add("234214");
+        obj.createContact(new Person("karl", arr2));
+        String[] toPrint = obj.fetchAllNames();
+        ArrayList<String> arr3 = new ArrayList<>();
+        arr3.add("23214");
+        arr3.add("402752");
+        obj.createContact(new Person("mia", arr3));
+        String[] o = obj.fetchAllPhoneNumbers();
+
     }
 }
