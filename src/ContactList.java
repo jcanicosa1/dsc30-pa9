@@ -62,6 +62,9 @@ public class ContactList {
                 contacts.add(people.get(i));
             }
         }
+        if (contacts.size() == 0) {
+            throw new IllegalArgumentException();
+        }
 
         Person[] peopleArr = new Person[contacts.size()];
         for (int i = 0; i < contacts.size(); i++) {

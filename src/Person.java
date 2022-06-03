@@ -22,9 +22,6 @@ public class Person {
         InsertionSort(pn);
         return true;
     }
-    public ArrayList<String> getArray(){
-        return pnArray;
-    }
 
     private void InsertionSort(String toInsert) {
         int start = 0;
@@ -45,10 +42,8 @@ public class Person {
     }
 
     public ArrayList<String> getPhoneNumbers() {
-        /* implements quicksort algorithm to sort the array in ascending order */
         return this.pnArray;
     }
-
 
     public boolean deletePhoneNumber(String pn) {
         if (getSize() == 1) {

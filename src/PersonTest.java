@@ -19,7 +19,11 @@ public class PersonTest {
         obj.addPhoneNumber("6502910891");
         obj.addPhoneNumber("6502910890");
         obj.addPhoneNumber("6502910893");
-        System.out.print(obj.getArray());
+        obj.addPhoneNumber("3");
+        obj.addPhoneNumber("1");
+        obj.addPhoneNumber("2");
+        System.out.print(obj.getPhoneNumbers());
+
 
     }
 
