@@ -25,14 +25,15 @@ public class ContactList {
 
     private void InsertionSort(Person toInsert) {
         int start = 0;
-        int end = size();
+        int end = people.size();
         for (int i = start; i < end; i++) {
             if (0 > (toInsert.getName().compareTo(people.get(i).getName()))) {
                 people.add(i, toInsert);
+                //System.out.println("added " + toInsert.getName());
                 break;
             }
         }
-        if (end == size()) {
+        if (end == people.size()) {
             people.add(toInsert);
         }
     }
@@ -57,11 +58,15 @@ public class ContactList {
 
     public Person[] getContactByRange(String start, String end) {
         ArrayList<Person> contacts = new ArrayList<>();
+        System.out.println("start: " + start);
+        System.out.println("end: " + end);
         for (int i = 0; i < size(); i++) {
-            if (0 < people.get(i).getName().compareTo(start) && 0 > people.get(i).getName().compareTo(end)) {
+            //System.out.println(people.get(i).getName());
+            if ((0 == people.get(i).getName().compareTo(start) || 0 > people.get(i).getName().compareTo(start)) && 0 < people.get(i).getName().compareTo(end)) {
                 contacts.add(people.get(i));
             }
         }
+
         if (contacts.size() == 0) {
             throw new IllegalArgumentException();
         }
