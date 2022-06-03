@@ -74,7 +74,7 @@ public class ContactList {
         if (!lookupContact(name)) {
             return false;
         }
-        people.remove(name);
+        people.remove(getContact(name));
         return true;
     }
 
