@@ -19,30 +19,73 @@ public class Person {
         if (pnArray.contains(pn)) {
             return false;
         }
-        InsertionSort(pn);
+        pnArray.add(pn);
         return true;
     }
 
-    private void InsertionSort(String toInsert) {
-        int start = 0;
-        int end = getSize();
-        for (int i = start; i < end; i++) {
-            if (0 > (toInsert.compareTo(pnArray.get(i)))) {
-                pnArray.add(i, toInsert);
-                break;
-            }
-        }
-        if (end == getSize()) {
-            pnArray.add(toInsert);
-        }
-    }
 
     private int getSize() {
         return pnArray.size();
     }
 
     public ArrayList<String> getPhoneNumbers() {
+        QuickSort(this.pnArray, 0, getSize());
         return this.pnArray;
+    }
+
+    public void QuickSort(ArrayList<String> list, int start, int end) {
+        // if this is true, the list is already sorted
+        if (start >= end) {
+            return;
+        }
+        // when calling the helper function, the end of the low index is returned
+        int lowEnd = partition(list, start, end);
+
+        // this method is recursively and will end once it is sorted
+        QuickSort(list, start, lowEnd);
+        QuickSort(list, lowEnd + 1, end);
+    }
+
+    /**
+     * partition helper function for QuickSort
+     *
+     * @param arr The arraylist we want to sort
+     * @param l left-most index we want to merge
+     * @param h right-most index we want to merge
+     */
+    private int partition(ArrayList<String> arr, int l, int h) {
+        int midpoint = l + (h - l) / 2;
+        String pivot = arr.get(midpoint);
+        String temp; // temporary value used for swapping
+        // sets pivot to the middle element
+
+        boolean check = false;
+        while (!check) {
+            // looks for the number that is >= pivot
+            while (0 > arr.get(l).compareTo(pivot)) {
+                l++;
+            }
+
+            // searches for the value that is >= pivot from the high index
+            while (0 < arr.get(h).compareTo(pivot)) {
+                h--;
+            }
+
+            // if no elements or only one element is left, then the list is done
+            if (l >= h) {
+                check = true;
+            } else {
+                // swaps values
+                temp = arr.get(l);
+                arr.set(l, arr.get(h));
+                arr.set(h, temp);
+
+                // updates the indexes
+                l++;
+                h--;
+            }
+        }
+        return h;
     }
 
     public boolean deletePhoneNumber(String pn) {
