@@ -5,17 +5,10 @@
 import java.util.*;
 
 public class ContactList {
-    private ArrayList<Person> people = new ArrayList<>();
     private int size = 0;
+    private DoublyLinkedList<Person> people = new DoublyLinkedList<>();
 	
 	// Add instance variables here
-    /*
-    public ContactList() {
-        this.people =  new ArrayList<>();
-        this.size = 0;
-    }
-
-     */
 	
     public boolean createContact(Person person) {
         if (lookupContact(person.getName())) {
@@ -34,8 +27,6 @@ public class ContactList {
         int start = 0;
         int end = size();
         for (int i = start; i < end; i++) {
-            System.out.print(i);
-            System.out.print(end);
             if (0 > (toInsert.getName().compareTo(people.get(i).getName()))) {
                 people.add(i, toInsert);
                 break;
@@ -65,25 +56,16 @@ public class ContactList {
     }
 
     public Person[] getContactByRange(String start, String end) {
-        int startIndex = 0;
-        int endIndex = 0;
+        ArrayList<Person> contacts = new ArrayList<>();
         for (int i = 0; i < size(); i++) {
-            if (0 < people.get(i).getName().compareTo(start)) {
-                startIndex = i;
-                break;
+            if (0 < people.get(i).getName().compareTo(start) && 0 > people.get(i).getName().compareTo(end)) {
+                contacts.add(people.get(i));
             }
         }
-        for (int i = 0; i < size(); i++) {
-            if (0 < people.get(i).getName().compareTo(end)) {
-                endIndex = i;
-                break;
-            }
-        }
-        Person[] peopleArr = new Person[endIndex-startIndex];
-        int count = 0;
-        for (int i = startIndex; i < endIndex; i++) {
-            peopleArr[count] = people.get(i);
-            count++;
+
+        Person[] peopleArr = new Person[contacts.size()];
+        for (int i = 0; i < contacts.size(); i++) {
+            peopleArr[i] = contacts.get(i);
         }
         return peopleArr;
     }
@@ -101,7 +83,7 @@ public class ContactList {
     }
 
     public String[] fetchAllNames() {
-        String[] peopleArr = new String[size() - 1];
+        String[] peopleArr = new String[size()];
         for (int i = 0; i < size(); i++) {
             peopleArr[i] = people.get(i).getName();
         }
@@ -111,4 +93,6 @@ public class ContactList {
     public String[] fetchAllPhoneNumbers() {
         return null;
     }
+
+
 }
