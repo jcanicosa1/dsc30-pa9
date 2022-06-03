@@ -75,6 +75,7 @@ public class ContactList {
             return false;
         }
         people.remove(getContact(name));
+        size--;
         return true;
     }
 
@@ -91,7 +92,21 @@ public class ContactList {
     }
 
     public String[] fetchAllPhoneNumbers() {
-        return null;
+        DoublyLinkedList<String> contacts = new DoublyLinkedList<>();
+        for (Person p : people) {
+            for (String numbers: p.getPhoneNumbers()) {
+                if(!contacts.contains(numbers)) {
+                    contacts.add(numbers);
+                }
+            }
+        }
+
+        String[] nums = new String[contacts.size()];
+        for (int i = 0; i < contacts.size(); i++) {
+            nums[i] = contacts.get(i);
+        }
+        return nums;
+
     }
 
 

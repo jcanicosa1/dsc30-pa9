@@ -252,11 +252,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     private Node getNth(int index) {
         Node current = head.next;
         for (int i = 0; i < index; i++) {
-            if (i == index) {
-                break;
-            } else {
-                current = current.next;
-            }
+            current = current.next;
         }
         return current;
     }
