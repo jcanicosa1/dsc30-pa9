@@ -29,7 +29,7 @@ public class Person {
     }
 
     public ArrayList<String> getPhoneNumbers() {
-        QuickSort(this.pnArray, 0, getSize());
+        QuickSort(this.pnArray, 0, getSize() - 1);
         return this.pnArray;
     }
 
